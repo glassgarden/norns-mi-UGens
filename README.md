@@ -36,7 +36,7 @@ installs aside first, so you never end up with two copies (that stops norns' aud
 starting).
 
 **1. Let a script do it.** Scripts that need these modules, like
-[terrarium](https://github.com/carlosedp/terrarium), offer to install them the first time you
+[terrarium](https://github.com/glassgarden/terrarium), offer to install them the first time you
 run them: press K3 when asked.
 
 **2. With the installer script.** Copy [mi-ugens-install.lua](mi-ugens-install.lua) onto your
@@ -48,7 +48,7 @@ norns into `dust/code/mi-ugens-install/` (with maiden's file browser, or over SM
 
 The screen shows what's installed now.
 
-**3. Over ssh**, with a tarball from the [releases](https://github.com/carlosedp/norns-mi-UGens/releases)
+**3. Over ssh**, with a tarball from the [releases](https://github.com/glassgarden/norns-mi-UGens/releases)
 (`ssh we@norns.local`, the password is `sleep`):
 
 ```bash

@@ -20,7 +20,7 @@ small C API. No dependencies beyond the C library: libstdc++ and the MSVC runtim
 
 ## Get it
 
-Every [release](https://github.com/carlosedp/norns-mi-UGens/releases) carries one package per
+Every [release](https://github.com/glassgarden/norns-mi-UGens/releases) carries one package per
 platform: `mi-UGens-native-linux-x86_64.tar.gz`, `mi-UGens-native-macos-universal.tar.gz`
 (x86_64 + arm64) and `mi-UGens-native-windows-x86_64.tar.gz`. Each unpacks to
 `mi-UGens-native/`: `lib/` with the libraries, `mi_ugens.hpp` to load and run them, this README

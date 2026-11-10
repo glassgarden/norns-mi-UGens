@@ -18,9 +18,9 @@ It's plain JavaScript with no dependencies and no bundler: two script files and 
 UGen (12 KB to 412 KB, about 1.1 MB for all seven). It works in any page, with or without a
 framework, and in node for offline rendering and tests.
 
-[terrarium](https://github.com/carlosedp/terrarium) uses it to play its norns engine in the
+[terrarium](https://github.com/glassgarden/terrarium) uses it to play its norns engine in the
 browser ([try it](https://carlosedp.github.io/terrarium/)); its
-[`lib/Engine_Terrarium.js`](https://github.com/carlosedp/terrarium/blob/main/lib/Engine_Terrarium.js)
+[`lib/Engine_Terrarium.js`](https://github.com/glassgarden/terrarium/blob/main/lib/Engine_Terrarium.js)
 is a complete example of SynthDefs rebuilt from these nodes.
 
 - [Get it](#get-it)
@@ -36,7 +36,7 @@ is a complete example of SynthDefs rebuilt from these nodes.
 
 ## Get it
 
-**Download:** every [release](https://github.com/carlosedp/norns-mi-UGens/releases) carries
+**Download:** every [release](https://github.com/glassgarden/norns-mi-UGens/releases) carries
 `mi-UGens-wasm.tar.gz` (and the same under the tag's name). It unpacks to `mi-UGens-wasm/`:
 
 ```

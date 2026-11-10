@@ -10,7 +10,7 @@
 --
 -- then SYSTEM > RESTART
 
-local REPO = "carlosedp/norns-mi-UGens"
+local REPO = "glassgarden/norns-mi-UGens"
 local URL = "https://github.com/" .. REPO .. "/releases/latest/download/mi-UGens-norns.tar.gz"
 local EXT = "/home/we/.local/share/SuperCollider/Extensions"
 local LOCAL_GLOB = "/home/we/dust/mi-UGens-norns*.tar.gz"
