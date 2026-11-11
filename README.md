@@ -1,13 +1,18 @@
-# norns-mi-UGens
+# mi-UGens builds
 
-_Mutable Instruments modules for monome norns_
+_Mutable Instruments modules for norns, web pages, plugins and apps_
 
 Émilie Gillet's Mutable Instruments modules (Plaits, Rings, Clouds, Beads, Elements and more)
 became [mi-UGens](https://github.com/v7b1/mi-UGens), Volker Böhm's SuperCollider versions of
-them. This repository builds them for [monome norns](https://monome.org/docs/norns/) and norns
-shield, so scripts and mods can use them, and publishes ready-to-install releases.
+them. This repository builds them for several targets and publishes ready-to-use releases:
 
-It picks up where [okyeron/mi-UGens](https://github.com/okyeron/mi-UGens) left off, with
+| Target | Package | For |
+| --- | --- | --- |
+| **monome norns** and norns shield (armhf) | `mi-UGens-norns.tar.gz` | scripts, engines and mods; all 13 modules |
+| **Web browsers** (WebAssembly) | `mi-UGens-wasm.tar.gz` | web pages and instruments, in an AudioWorklet; 7 modules |
+| **Linux** x86_64 and arm64, **macOS** (universal), **Windows** x86_64 | `mi-UGens-native-<os>-<arch>.tar.gz` | audio plugins, standalone apps, offline rendering; 7 modules |
+
+For norns it picks up where [okyeron/mi-UGens](https://github.com/okyeron/mi-UGens) left off, with
 newer modules (Beads, through [PR #24](https://github.com/v7b1/mi-UGens/pull/24)) and an
 installer that cleans up older copies for you.
 
@@ -29,7 +34,7 @@ installer that cleans up older copies for you.
 | **MiMu** | Mu: µ-law companding, crunchy lo-fi |
 | **MiGrids** | Grids: a topographic drum sequencer |
 
-## Install
+## Install on norns
 
 You need a norns or norns shield with Wi-Fi. Pick one of these; each one moves older mi-UGens
 installs aside first, so you never end up with two copies (that stops norns' audio engine from
@@ -97,12 +102,12 @@ any modern browser in an AudioWorklet, with no dependencies. Handy for a demo of
 a web instrument, or tuning a SynthDef without the device.
 [wasm/README.md](wasm/README.md) shows how to use them.
 
-**In a plugin or an app:** the same seven also come as native libraries for Linux, macOS
-(universal) and Windows, `mi-UGens-native-<os>-<arch>.tar.gz`, with a header-only C++ loader that
-runs them the way scsynth does. For audio plugins, standalone instruments, offline rendering.
+**In a plugin or an app:** the same seven also come as native libraries for Linux (x86_64 and
+arm64, such as a Raspberry Pi), macOS (universal) and Windows, `mi-UGens-native-<os>-<arch>.tar.gz`,
+with a header-only C++ loader that runs them the way scsynth does. For audio plugins, standalone instruments, offline rendering.
 [native/README.md](native/README.md) shows how to use them.
 
-## Things to keep in mind
+## Things to keep in mind (norns)
 
 - **CPU.** The CM3 in norns is a 1.2 GHz quad-core. Elements, Rings and Beads are heavy: a script
   plus one or two of them is a realistic budget. Watch the CPU meter in the norns menu.
@@ -119,7 +124,8 @@ runs them the way scsynth does. For audio plugins, standalone instruments, offli
 
 For developers, or to build another mi-UGens fork or branch.
 
-Requirements: `git`, `bash` and `podman` or `docker`. Works on x86_64 Linux, WSL2 and macOS.
+Requirements: `git`, `bash` and `podman` or `docker`. The norns and WebAssembly builds run on x86_64 or arm64 Linux, WSL2 and macOS; the native build
+needs the platform it targets.
 
 ```bash
 ./build.sh --pr 24                                    # upstream main + MiBeads
@@ -143,8 +149,9 @@ the defaults in the workflow (currently upstream + PR 24) and publishes a releas
 tarball under the tag's name (`mi-UGens-norns-v1.0.0.tar.gz`) and under the fixed name
 `mi-UGens-norns.tar.gz` that installers fetch from the latest release. The WebAssembly build
 goes alongside, as `mi-UGens-wasm-v1.0.0.tar.gz` and `mi-UGens-wasm.tar.gz`, and so do the
-native libraries, built on Linux, macOS and Windows runners (`mi-UGens-native-linux-x86_64.tar.gz`,
-`-macos-universal`, `-windows-x86_64`, each also under the tag's name).
+native libraries, built and tested on Linux (x86_64 and arm64), macOS and Windows runners
+(`mi-UGens-native-linux-x86_64.tar.gz`, `-linux-arm64`, `-macos-universal`, `-windows-x86_64`,
+each also under the tag's name).
 
 ### How it works
 
@@ -179,8 +186,8 @@ to turn a SynthDef into nodes.
 ### For plugins and apps
 
 `./build.sh --lib --pr 24` builds the same seven as native shared libraries for the machine it
-runs on (Linux, macOS universal, or Windows with Visual Studio's clang-cl, from Git Bash; needs
-cmake and a C++17 compiler), tests each by rendering it (`mi-test`), and packages them with
+runs on (Linux x86_64 or arm64, macOS universal, or Windows with Visual Studio's clang-cl, from
+Git Bash; needs cmake and a C++17 compiler), tests each by rendering it (`mi-test`), and packages them with
 `mi_ugens.hpp`.
 [native/README.md](native/README.md) has the C++ and C APIs.
 

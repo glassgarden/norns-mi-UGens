@@ -160,7 +160,7 @@ fi
 
 if ((LIB)); then
   case $(uname -s) in
-    Linux) OS=linux; ARCH=$(uname -m) ;;
+    Linux) OS=linux; ARCH=$(uname -m); [[ $ARCH == aarch64 ]] && ARCH=arm64 ;;
     Darwin) OS=macos; ARCH=universal ;;
     MINGW*|MSYS*|CYGWIN*) OS=windows; ARCH=x86_64 ;;
     *) echo "--lib: unknown system $(uname -s)" >&2; exit 1 ;;

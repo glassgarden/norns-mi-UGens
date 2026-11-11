@@ -1,4 +1,4 @@
-name: build norns mi-UGens
+name: build mi-UGens
 
 # Tag pushes (v*) build the defaults below and publish a release. The norns
 # installer script (mi-ugens-install.lua) downloads the release asset with the
@@ -44,6 +44,8 @@ jobs:
         include:
           - plat: linux-x86_64
             os: ubuntu-22.04   # the oldest runner: what it links against (glibc) is what users need
+          - plat: linux-arm64
+            os: ubuntu-22.04-arm
           - plat: macos-universal
             os: macos-14
           - plat: windows-x86_64
@@ -133,7 +135,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         run: |
           {
-            echo "Mutable Instruments modules for monome norns and norns shield: Beads, Braids, Clouds,"
+            echo "Mutable Instruments modules (mi-UGens) for monome norns and norns shield, web pages and native apps: Beads, Braids, Clouds,"
             echo "Elements, Grids, Mu, Omi, Plaits, Rings, Ripples, Tides, Verb and Warps."
             echo
             echo "**To install:** run the [mi-ugens-install](https://github.com/${GITHUB_REPOSITORY}#install) script on your norns"
@@ -143,7 +145,7 @@ jobs:
             echo "**For web pages:** \`mi-UGens-wasm.tar.gz\` has Plaits, Rings, Elements, Clouds, Beads, Ripples and Verb"
             echo "built as WebAssembly, to play in an AudioWorklet. See [wasm/README.md](https://github.com/${GITHUB_REPOSITORY}/blob/${GITHUB_REF_NAME}/wasm/README.md)."
             echo
-            echo "**For plugins and apps:** \`mi-UGens-native-<os>-<arch>.tar.gz\` has the same seven as native libraries for Linux,"
+            echo "**For plugins and apps:** \`mi-UGens-native-<os>-<arch>.tar.gz\` has the same seven as native libraries for Linux (x86_64 and arm64),"
             echo "macOS (universal) and Windows, with a header-only C++ loader. See [native/README.md](https://github.com/${GITHUB_REPOSITORY}/blob/${GITHUB_REF_NAME}/native/README.md)."
             echo
             echo "### Build"
