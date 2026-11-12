@@ -25,7 +25,7 @@ on:
         description: SuperCollider tag for headers
         default: Version-3.12.2
   push:
-    tags: ['v*']
+    tags: ["v*"]
 
 env:
   # Defaults for tag builds. Drop "24" once MiBeads is merged upstream, or point
@@ -43,11 +43,11 @@ jobs:
       matrix:
         include:
           - plat: linux-x86_64
-            os: ubuntu-22.04   # the oldest runner: what it links against (glibc) is what users need
+            os: ubuntu-22.04 # the oldest runner: what it links against (glibc) is what users need
           - plat: linux-arm64
             os: ubuntu-22.04-arm
           - plat: macos-universal
-            os: macos-14
+            os: macos-15
           - plat: windows-x86_64
             os: windows-2022
     runs-on: ${{ matrix.os }}
@@ -85,11 +85,11 @@ jobs:
     needs: native
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # create releases
+      contents: write # create releases
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4   # the wasm build renders each UGen in node to test it
+      - uses: actions/setup-node@v4 # the wasm build renders each UGen in node to test it
         with:
           node-version: 20
 
@@ -124,7 +124,7 @@ jobs:
           name: mi-UGens-wasm
           path: dist/mi-UGens-wasm-*.tar.gz
 
-      - uses: actions/download-artifact@v4   # the native jobs' packages, for the release
+      - uses: actions/download-artifact@v4 # the native jobs' packages, for the release
         if: startsWith(github.ref, 'refs/tags/')
         with:
           pattern: mi-UGens-native-*
